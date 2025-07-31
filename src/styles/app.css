@@ -1,19 +1,14 @@
 @import "tailwindcss";
 @import "./colors.css";
+@import "./text.css";
 
 @theme{
     --spacing: 8px;
 }
 
-@font-face {
-    font-family: "Satoshi";
-    src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+body {
+    background: var(--color-neutral-950);
+    color: var(--color-body);
 }
 
-body {
-    font-family: "SF Pro Display", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", "Arial", sans-serif;
-    font-family: "Satoshi", sans-serif;
-}
+
