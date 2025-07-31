@@ -1,0 +1,19 @@
+
+@theme{
+    --color-*: initial;
+
+    --color-neutral-50: #FAFAFA;
+    --color-neutral-100: #F2F2F2;
+    --color-neutral-200: #E6E6E6;
+    --color-neutral-300: #CCCCCC;
+    --color-neutral-400: #B0B0B0;
+    --color-neutral-500: #808080;
+    --color-neutral-600: #656565;
+    --color-neutral-700: #4D4D4D;
+    --color-neutral-800: #353535;
+    --color-neutral-900: #212121;
+    --color-neutral-950: #121212;
+
+    --color-body: var(--color-neutral-200);
+    --color-heading: var(--color-neutral-50);
+}
