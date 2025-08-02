@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../layout/BaseLayout.astro";
 import {getCollection,getEntry} from "astro:content";
+import {splitLessons} from "../../../lib";
 export const prerender = false
 
 const {course: id} = Astro.params;
@@ -12,19 +13,33 @@ const course = await getEntry("courses",id);
 const lessons = await getCollection("lessons",({data}) => {
     return data.course.id === id;
 });
-console.log(lessons);
+
 if (!course){
     return Astro.redirect("/404")
 }
-
+const lessonsMap = splitLessons(lessons);
 
 ---
 
 <BaseLayout>
-    <main>
+    <main class="size-full grid place-items-center">
         <h3 class="text-heading">{course.data.title}</h3>
-        <section>
-            <h4 class="text-heading">Curriculum</h4>
+        <section class="w-full max-w-[800px]">
+            <h4 class="text-heading mb-3">Curriculum</h4>
+            <ul class="space-y-6">
+                {lessonsMap.entries().map(([section,lessons]) =>
+                    <li class="space-y-2.5">
+                        <h5>{section}</h5>
+                        <ul class="flex gap-3">
+                            {lessons.map(lesson =>
+                                <a href=`/courses/${section}/${lesson}` class="p-1.5 bg-neutral-900 rounded-xs">
+                                    {lesson}
+                                </a>
+                            )}
+                        </ul>
+                    </li>
+                )}
+            </ul>
         </section>
     </main>
 </BaseLayout>
