@@ -1,13 +1,17 @@
 ---
-import BaseLayout from "../../layout/base-layout.astro"
-import {getCollection,getEntry} from "astro:content";
-const lessons = await getCollection("lessons");
+import BaseLayout from "../../layout/BaseLayout.astro"
+import {getCollection} from "astro:content";
 const courses = await getCollection("courses");
-
-console.log(lessons[0])
-console.log(courses)
 ---
 
 <BaseLayout>
-    <p>Hi</p>
+    <main class="p-4">
+        <ul>
+            {courses.map(course =>
+                <a href=`courses/${course.id}`>
+                    <h5>{course.data.title}</h5>
+                </a>
+            )}
+        </ul>
+    </main>
 </BaseLayout>

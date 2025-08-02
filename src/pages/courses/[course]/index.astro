@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../../layout/BaseLayout.astro";
+import {getCollection,getEntry} from "astro:content";
+export const prerender = false
+
+const {course: id} = Astro.params;
+if (!id){
+    return Astro.redirect("/");
+}
+
+const course = await getEntry("courses",id);
+const lessons = await getCollection("lessons",({data}) => {
+    return data.course.id === id;
+});
+console.log(lessons);
+if (!course){
+    return Astro.redirect("/404")
+}
+
+
+---
+
+<BaseLayout>
+    <main>
+        <h3 class="text-heading">{course.data.title}</h3>
+        <section>
+            <h4 class="text-heading">Curriculum</h4>
+        </section>
+    </main>
+</BaseLayout>
