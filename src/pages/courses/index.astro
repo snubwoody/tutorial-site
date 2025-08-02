@@ -1,5 +1,11 @@
 ---
 import BaseLayout from "../../layout/base-layout.astro"
+import {getCollection,getEntry} from "astro:content";
+const lessons = await getCollection("lessons");
+const courses = await getCollection("courses");
+
+console.log(lessons[0])
+console.log(courses)
 ---
 
 <BaseLayout>

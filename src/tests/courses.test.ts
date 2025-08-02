@@ -1,9 +1,8 @@
 import {expect, test} from "vitest";
-import {getCollection,getEntry} from "astro:content";
 
 test("Courses collection",async () => {
+    const {getCollection,getEntry} = await import("astro:content");
     const courses = await getCollection("courses");
-    const fonts = await getCollection("fonts");
-    console.log(fonts);
-    console.log(courses);
+    const lessons = await getCollection("lessons");
+    console.log(courses,lessons);
 })

@@ -1,5 +1,6 @@
 ---
 title: Getting started
+course: coding
 ---
 In this tutorial, we're going to be learning [python](https://www.python.org/), a general purpose, easy to learn programming 
 language.

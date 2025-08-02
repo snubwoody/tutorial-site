@@ -1,5 +1,6 @@
 ---
 title: Variables
+course: coding
 ---
 
 A variable is a like a container for data.

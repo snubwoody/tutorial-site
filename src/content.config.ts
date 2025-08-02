@@ -1,18 +1,19 @@
-import { defineCollection,z } from "astro:content";
+import { defineCollection,z,reference } from "astro:content";
 import {glob} from "astro/loaders";
 
+const lessons = defineCollection({
+    loader: glob({pattern: "**/*.md", base: "./collections/lessons"}),
+    schema: z.object({
+        title: z.string(),
+        course: reference("courses"),
+    }),
+});
+
 const courses = defineCollection({
-    loader: glob({pattern: "**/*.md", base: "./courses"}),
+    loader: glob({pattern: "*.toml", base: "./collections/courses"}),
     schema: z.object({
         title: z.string(),
     }),
 });
 
-const fonts = defineCollection({
-    loader: glob({pattern: "*.md", base: "./fonts"}),
-    schema: z.object({
-        title: z.string(),
-    })
-});
-
-export const collections = { courses, fonts };
+export const collections = { courses,lessons };
